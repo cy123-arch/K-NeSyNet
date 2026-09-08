@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the K-NeSyNet manuscript and this software release."
+title: "K-NeSyNet"
+type: software
+version: 0.1.0
+date-released: 2026-09-02
+authors:
+  - family-names: Yang
+    given-names: Liuqing
+    orcid: https://orcid.org/0009-0002-9623-5877
+  - family-names: Wan
+    given-names: Hong
+    orcid: https://orcid.org/0009-0003-4523-7263
+  - family-names: Zhu
+    given-names: Jiangping
+    orcid: https://orcid.org/0000-0002-9756-5264
+  - family-names: Zhou
+    given-names: Pei
+    orcid: https://orcid.org/0000-0003-1631-3637
+  - family-names: Wang
+    given-names: Zhongjian
+    orcid: https://orcid.org/0000-0003-2247-3848

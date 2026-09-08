@@ -1,0 +1,4 @@
+returncode=0
+stdout={'smoke': 'PASS', 'train_loss': 0.7361019849777222, 'threshold': 0.38999999999999996, 'CR_F1': 0.6000000000000001, 'Jaccard': 0.4583333333333333}
+
+stderr=

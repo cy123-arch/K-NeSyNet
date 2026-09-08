@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "knesynet"
+version = "0.1.0"
+description = "K-NeSyNet multimodal neuro-symbolic oncology treatment-record prediction"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+  {name = "Liuqing Yang"},
+  {name = "Hong Wan"},
+  {name = "Jiangping Zhu"},
+  {name = "Pei Zhou"},
+  {name = "Zhongjian Wang"},
+]
+
+[tool.setuptools.packages.find]
+include = ["knesynet*"]

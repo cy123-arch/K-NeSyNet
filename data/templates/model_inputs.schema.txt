@@ -1,0 +1,14 @@
+model_inputs.npz keys and shapes
+
+image               float32 [N, 512]
+text                float32 [N, 768]
+genomic             float32 [N, 10586]
+mask                float32 [N, 3]
+labels              float32 [N, 80]
+guide               float32 [N, 80]
+target              float32 [N, 80]
+contra               float32 [N, 80]
+contra_indicator     float32 [N, 80]
+case_id              string  [N]
+project_id           string  [N]
+split                string  [N]  # train / validation / test

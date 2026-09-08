@@ -1,0 +1,92 @@
+seed: 42
+seeds: [42, 123, 456]
+
+data:
+  projects:
+    - TCGA-BRCA
+    - TCGA-LUAD
+    - TCGA-LUSC
+    - TCGA-COAD
+    - TCGA-PRAD
+    - TCGA-KIRC
+    - TCGA-THCA
+    - TCGA-HNSC
+    - TCGA-STAD
+    - TCGA-UCEC
+  candidate_drug_count: 80
+  gene_count: 10586
+  split:
+    train: 3346
+    validation: 717
+    test: 718
+  paths:
+    cohort: data/cohort.csv
+    treatments: data/treatments.csv
+    drug_vocabulary: data/drug_vocabulary.csv
+    drug_aliases: data/drug_aliases.csv
+    gene_vocabulary: data/gene_vocabulary.csv
+    genomic_maf: data/mutations.maf.tsv
+    text_manifest: data/text_manifest.csv
+    image_manifest: data/image_manifest.csv
+    graph_edges: data/kg_edges.csv
+    graph_entities: data/kg_entities.csv
+    guideline_rules: data/guideline_rules.csv
+    contraindication_rules: data/contraindication_rules.csv
+    drug_targets: data/drug_targets.csv
+
+preprocessing:
+  imaging:
+    tile_size: 224
+    magnification: 20
+    max_tiles_per_slide: 256
+    encoder: resnet50
+    pretrained: imagenet
+    freeze_backbone: true
+    case_dim: 512
+  text:
+    checkpoint: emilyalsentzer/Bio_ClinicalBERT
+    revision: main
+    max_tokens: 512
+    overlap_tokens: 64
+    fine_tune: true
+    case_dim: 768
+  genomics:
+    retained_variant_classes:
+      - Missense_Mutation
+      - Nonsense_Mutation
+      - Frame_Shift_Del
+      - Frame_Shift_Ins
+      - In_Frame_Del
+      - In_Frame_Ins
+      - Splice_Site
+      - Translation_Start_Site
+      - Nonstop_Mutation
+    projected_dim: 256
+
+model:
+  embedding_dim: 64
+  gat_heads: 4
+  gat_layers: 2
+  dropout: 0.3
+  graph_mode: transductive
+  symbolic_eps: 1.0e-8
+
+training:
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 1.0e-4
+  batch_size: 128
+  max_epochs: 100
+  early_stopping_patience: 12
+  scheduler: cosine
+  alpha_safety: 1.0
+  beta_l2: 1.0e-5
+
+evaluation:
+  top_k: 10
+  threshold: null
+  threshold_selection: validation_samples_f1_all_80
+  threshold_grid_start: 0.05
+  threshold_grid_stop: 0.95
+  threshold_grid_step: 0.01
+  patient_level_average: samples
